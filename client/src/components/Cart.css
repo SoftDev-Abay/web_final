@@ -1,0 +1,9 @@
+.shopping-cart-container {
+  position: fixed;
+  overflow: auto;
+  width: 50%;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 9909;
+}

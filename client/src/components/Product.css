@@ -1,0 +1,11 @@
+.heart-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 20px;
+  font-size: 1.7rem;
+  color: #f00;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,22 @@
+.slider-button {
+  background-color: #9c9191;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+  z-index: 1;
+  top: calc((100% - 64px) * 0.5);
+}
+
+.slider-button-left {
+  left: 10px;
+}
+.slider-button-right {
+  right: 10px;
+}
+.slider-container {
+  left: 0;
+  transition: left 0.5s ease-in-out;
+}
