@@ -48,6 +48,7 @@ const Product = ({
           navigate(`/product/${id}`);
         }}
       >
+        {sale > 0 && <div className="sale-tag">SALE</div>}
         {favorite ? (
           <i
             class="heart-icon bi bi-heart-fill"
@@ -68,9 +69,10 @@ const Product = ({
         <img
           src={"http://localhost:5000/images/" + img}
           className="card-img-top"
+          style={{ padding: "15px" }}
           width={className.length > 0 ? "100%" : "286px"}
           height={className.length > 0 ? "100%" : "286px"}
-          alt="Jacket"
+          alt={name}
         />
         <div className="card-body d-flex flex-column justify-content-between">
           <h5 className="card-title d-flex justify-content-between">

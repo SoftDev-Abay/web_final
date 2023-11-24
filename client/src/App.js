@@ -11,7 +11,7 @@ import Profile from "./pages/Profile";
 import ProductsContext from "./context/ProductsContext";
 import Products from "./pages/Products";
 import SingleProduct from "./pages/SingleProduct";
-
+import SearchProducts from "./pages/SearchProducts";
 function App() {
   return (
     <>
@@ -27,6 +27,14 @@ function App() {
                 element={
                   <>
                     <Products></Products>
+                  </>
+                }
+              />
+              <Route
+                path="/search"
+                element={
+                  <>
+                    <SearchProducts></SearchProducts>
                   </>
                 }
               />

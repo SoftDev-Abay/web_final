@@ -9,3 +9,16 @@
   z-index: 2;
   transition: all 0.3s ease-in-out;
 }
+.sale-tag {
+  position: absolute;
+  background-color: #222222;
+  color: white;
+  font-weight: 700;
+  border-radius: 15px;
+  padding: 5px 10px;
+  top: 15px;
+  left: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  z-index: 2;
+}

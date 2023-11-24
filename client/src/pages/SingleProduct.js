@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import Navbar from "../sections/Navbar";
 import Footer from "../sections/Footer";
 import { useStateContext } from "../context/StateContext";
@@ -71,6 +71,45 @@ function SingleProduct() {
       },
       1
     );
+  };
+  const getRelatedProducts = () => {
+    const relatedProducts = products.filter(
+      (product) => product.product_id != product_id
+    );
+
+    const wordsToSearch = product_name.trimStart().toLowerCase().split(" ");
+
+    const productsRelatedByName = relatedProducts.filter(
+      (productFilter) =>
+        wordsToSearch.filter((word) =>
+          productFilter.product_name.toLowerCase().includes(word.toLowerCase())
+        ).length > 0
+    );
+    const productsRelatedByCategory = relatedProducts.filter(
+      (productFilter) => productFilter.category === category
+    );
+
+    const relatedProductsWithLogicWithDublications = [
+      ...productsRelatedByName,
+      ...productsRelatedByCategory,
+    ];
+    const relatedProductsWithLogic =
+      relatedProductsWithLogicWithDublications.filter(
+        (product, index, self) =>
+          self.findIndex((t) => t.product_id === product.product_id) === index
+      );
+
+    const relatedProductsWithLogicCount = relatedProductsWithLogic.length;
+
+    if (relatedProductsWithLogicCount > 4) {
+      return relatedProductsWithLogic.slice(0, 4);
+    }
+    const productsToAdd = relatedProducts
+      .filter((filterProduct) => {
+        return !relatedProductsWithLogic.includes(filterProduct);
+      })
+      .slice(0, 4 - relatedProductsWithLogicCount);
+    return [...relatedProductsWithLogic, ...productsToAdd];
   };
   // Render your SingleProduct component with the fetched data
   return (
@@ -153,23 +192,20 @@ function SingleProduct() {
         <div class="container px-4 px-lg-5 mt-5">
           <h2 class="fw-bolder mb-4">Related products</h2>
           <div class="row gy-4 gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {products
-              .filter((product) => product.product_id != product_id)
-              .slice(0, 4)
-              .map((product) => {
-                return (
-                  <Product
-                    key={product.product_id}
-                    id={product.product_id}
-                    img={product.img_url}
-                    name={product.product_name}
-                    price={product.price}
-                    category={product.category}
-                    sale={product.sale}
-                    favorite={product.favorite}
-                  />
-                );
-              })}
+            {getRelatedProducts().map((product) => {
+              return (
+                <Product
+                  key={product.product_id}
+                  id={product.product_id}
+                  img={product.img_url}
+                  name={product.product_name}
+                  price={product.price}
+                  category={product.category}
+                  sale={product.sale}
+                  favorite={product.favorite}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

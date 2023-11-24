@@ -51,6 +51,12 @@ const Navbar = ({ classNamePosition = "", bgDark = false }) => {
                   Products{" "}
                 </a>
               </li>
+              <li className="nav-item">
+                <a href="/search" className="nav-link">
+                  {" "}
+                  Search{" "}
+                </a>
+              </li>
             </ul>
 
             <ul className="navbar-nav ms-1 ms-lg-5 d-flex flex-row justify-content-between">

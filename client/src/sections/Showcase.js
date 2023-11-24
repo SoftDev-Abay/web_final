@@ -15,7 +15,6 @@ const Showcase = () => {
               Perfect for any season, our garments are designed to keep you
               comfortable all day long.
             </p>
-            <button className="btn btn-primary">Buy Now</button>
           </div>
           <img
             src="/assets/img/left.png"
@@ -39,7 +38,6 @@ const Showcase = () => {
               make you feel comfortable and confident in every move. Be your
               best with us.
             </p>
-            <button className="btn btn-primary">Buy Now</button>
           </div>
         </div>
       </div>
